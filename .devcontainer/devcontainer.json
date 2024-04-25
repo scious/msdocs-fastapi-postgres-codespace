@@ -1,14 +1,10 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the README at:
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.245.0/containers/python-3
 {
-	"name": "python-db-copilot",
+	"name": "python-fastapi",
 	"dockerComposeFile": "docker-compose.yaml",
 	"service": "app",
 	"workspaceFolder": "/workspace",
-	"forwardPorts": [5432],
-	"portsAttributes": {
-		"5432": {"label": "PostgreSQL port", "onAutoForward": "silent"}
-	},
 	"features": {
 		"ghcr.io/devcontainers/features/sshd:1": {
 			"version": "latest"
@@ -23,10 +19,7 @@
 				"ms-python.python",
 				"ms-python.vscode-pylance",
 				"charliermarsh.ruff",
-				"ms-python.black-formatter",
-				"mtxr.sqltools",
-				"mtxr.sqltools-driver-pg",
-				"ms-vscode.vscode-node-azure-pack"
+				"ms-python.black-formatter"
 			],
 			// Set *default* container specific settings.json values on container create.
 			"settings": {
@@ -41,29 +34,6 @@
 					}
 				},
 				"python.formatting.provider": "black",
-				"sqltools.connections": [
-					{
-						"name": "Local database",
-						"driver": "PostgreSQL",
-						"server": "localhost",
-						"port": 5432,
-						"database": "postgres",
-						"username": "admin",
-						"password": "LocalPasswordOnly"
-					},
-					{
-						"name": "Azure database",
-						"driver": "PostgreSQL",
-						"server": "<HOSTNAME>.postgres.database.azure.com",
-						"port": 5432,
-						"database": "postgres",
-						"username": "<USERNAME>",
-						"askForPassword": true,
-						"pgOptions": {
-							"ssl": true
-						}
-					}
-				],
 				"files.exclude": {
 					".ruff_cache": true,
 					".pytest_cache": true
